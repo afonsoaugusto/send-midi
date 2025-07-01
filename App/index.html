@@ -124,6 +124,7 @@
             <div class="status" id="status"></div>
         </div>
     </div>
+    <script src="midi-utils.js"></script>
     <script>
         let songs = [];
         let selectedIdx = 0;
@@ -166,23 +167,28 @@
             const song = songs[selectedIdx];
             const title = document.createElement('div');
             title.className = 'song-title';
-            title.textContent = song.name;
-            const midiInfo = document.createElement('div');
+            title.textContent = song.name || `BPM: ${song.bpm}`;
+            // Gera as mensagens MIDI a partir do BPM
+            let midiMsgs = convertBPMToMidi(song.bpm);
+            let midiInfo = document.createElement('div');
             midiInfo.className = 'midi-info';
-            midiInfo.innerHTML = `Canal MIDI: 74, Value: ${song.midi[0].value} &nbsp;|&nbsp; Canal MIDI: 75, Value: ${song.midi[1].value}`;
+            if (midiMsgs) {
+                midiInfo.innerHTML = `BPM: ${song.bpm} &nbsp;|&nbsp; Canal MIDI: 74, Value: ${midiMsgs[0].value} &nbsp;|&nbsp; Canal MIDI: 75, Value: ${midiMsgs[1].value}`;
+            } else {
+                midiInfo.innerHTML = `BPM inválido (${song.bpm}). Use 40-300.`;
+            }
             const btn = document.createElement('button');
             btn.className = 'send-btn' + (sending ? ' sending' : '');
             btn.textContent = 'Enviar MIDI';
-            btn.disabled = !midiOutput || sending;
+            btn.disabled = !midiOutput || sending || !midiMsgs;
             btn.onclick = async () => {
-                if (!midiOutput || sending) return;
+                if (!midiOutput || sending || !midiMsgs) return;
                 sending = true;
                 renderSelectedSong();
-                // Envia duas mensagens simultâneas (Control Change)
-                song.midi.forEach(msg => {
+                midiMsgs.forEach(msg => {
                     midiOutput.send([0xB0, msg.channel, msg.value]);
                 });
-                statusDiv.textContent = `MIDI enviado para: ${song.name}`;
+                statusDiv.textContent = `MIDI enviado para BPM: ${song.bpm}`;
                 setTimeout(() => {
                     sending = false;
                     renderSelectedSong();
