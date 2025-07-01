@@ -144,20 +144,11 @@ export function renderSongListApp(ctx) {
 
             let infoDiv = document.createElement('div');
             infoDiv.style.flex = '1';
-            let name = song.name;
-            let artist = '';
-            let tonality = '';
-            let bpm = song.bpm;
-            let match = name.match(/–\s*([^\(\-]+)(\(|$)/);
-            if (match) artist = match[1].trim();
-            let tomMatch = name.match(/Tom: ([^,\)]+)/i);
-            if (tomMatch) tonality = tomMatch[1].trim();
-            let bpmMatch = name.match(/BPM: (\d+)/i);
-            if (bpmMatch) bpm = bpmMatch[1];
-            let info = `<div class='song-title'>${name.split('–')[1] ? name.split('–')[1].split('(')[0].trim() : name}</div>`;
-            if (artist) info += `<div class='song-author'>Artista: ${artist}</div>`;
-            if (tonality) info += `<div class='song-tonality'>Tom: ${tonality}</div>`;
-            if (bpm) info += `<div class='song-bpm'>BPM: ${bpm}</div>`;
+            let info = `<div class='song-title'><b>${song.title || song.name}</b></div>`;
+            if (song.author) info += `<div class='song-author'>Artista: ${song.author}</div>`;
+            if (song.obs && song.obs.trim() !== "") info += `<div class='song-obs'>${song.obs}</div>`;
+            if (song.tom) info += `<div class='song-tonality'>Tom: ${song.tom}</div>`;
+            if (song.bpm) info += `<div class='song-bpm'>BPM: ${song.bpm}</div>`;
             infoDiv.innerHTML = info;
 
             // Botão enviar MIDI

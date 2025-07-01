@@ -1,197 +1,314 @@
 [
     {
         "group": "INTRO MISTERIOSA",
-        "name": "In the Air Tonight – Phil Collins (Tom: C, BPM: 99)",
-        "bpm": 99
+        "name": "In the Air Tonight",
+        "bpm": 99,
+        "author": "Phil Collins",
+        "obs": "",
+        "tom": "C"
     },
     {
         "group": "COMEÇO EXPLOSIVO",
-        "name": "Crazy – Seal (Tom: B minor, BPM: 103)",
-        "bpm": 103
+        "name": "Crazy",
+        "bpm": 103,
+        "author": "Seal",
+        "obs": "",
+        "tom": "B minor"
     },
     {
         "group": "COMEÇO EXPLOSIVO",
-        "name": "Rádio Pirata – RPM (Tom: B, BPM: 153)",
-        "bpm": 153
+        "name": "Rádio Pirata",
+        "bpm": 153,
+        "author": "RPM",
+        "obs": "",
+        "tom": "B"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Achy Breaky Heart – Billy Ray Cyrus (Tom: A, BPM: 122)",
-        "bpm": 122
+        "name": "Achy Breaky Heart",
+        "bpm": 122,
+        "author": "Billy Ray Cyrus",
+        "obs": "",
+        "tom": "A"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Garoto de Aluguel – Zé Ramalho (Tom: F#/G♭ minor, BPM: 90)",
-        "bpm": 90
+        "name": "Garoto de Aluguel",
+        "bpm": 90,
+        "author": "Zé Ramalho",
+        "obs": "",
+        "tom": "F#/G♭ minor"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Pais E Filhos – Legião Urbana (Tom: G, BPM: 90)",
-        "bpm": 90
+        "name": "Pais E Filhos",
+        "bpm": 90,
+        "author": "Legião Urbana",
+        "obs": "",
+        "tom": "G"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Telegrama – Zeca Baleiro (Tom: B minor, BPM: 95)",
-        "bpm": 95
+        "name": "Telegrama",
+        "bpm": 95,
+        "author": "Zeca Baleiro",
+        "obs": "",
+        "tom": "B minor"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Sem Radar – Ls Jack (Tom: F#/G♭, BPM: 76)",
-        "bpm": 76
+        "name": "Sem Radar",
+        "bpm": 76,
+        "author": "Ls Jack",
+        "obs": "",
+        "tom": "F#/G♭"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Chão de Giz – Zé Ramalho (Tom: G, BPM: 144)",
-        "bpm": 144
+        "name": "Chão de Giz",
+        "bpm": 144,
+        "author": "Zé Ramalho",
+        "obs": "",
+        "tom": "G"
     },
     {
         "group": "BLOCO VIOLÃO",
-        "name": "Um Minuto Para O Fim Do Mundo – CPM 22 (Tom: C, BPM: 127)",
-        "bpm": 127
+        "name": "Um Minuto Para O Fim Do Mundo",
+        "bpm": 127,
+        "author": "CPM 22",
+        "obs": "",
+        "tom": "C"
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
-        "name": "Mulher de fases – Raimundos (feat. Thammer) (Tom: G, BPM: 132)",
-        "bpm": 132
+        "name": "Mulher de fases",
+        "bpm": 132,
+        "author": "Raimundos",
+        "obs": "feat. Thammer",
+        "tom": "G"
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
-        "name": "A Cera – O Surto (feat. Diego) (Tom: C minor (1 Tom Abaixo), BPM: 133)",
-        "bpm": 133
+        "name": "A Cera",
+        "bpm": 133,
+        "author": "O Surto",
+        "obs": "feat. Diego",
+        "tom": "C minor (1 Tom Abaixo)"
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
-        "name": "In the End – Linkin Park (feat. Hinner Caldeira) (Tom: D#/E♭ minor, BPM: 105)",
-        "bpm": 105
+        "name": "In the End",
+        "bpm": 105,
+        "author": "Linkin Park",
+        "obs": "feat. Hinner Caldeira",
+        "tom": "D#/E♭ minor"
     },
     {
         "group": "CLIMA EMOCIONAL",
-        "name": "Last Kiss – Pearl Jam (Tom: G, BPM: 112)",
-        "bpm": 112
+        "name": "Last Kiss",
+        "bpm": 112,
+        "author": "Pearl Jam",
+        "obs": "",
+        "tom": "G"
     },
     {
         "group": "CLIMA EMOCIONAL",
-        "name": "Patience – Guns N' Roses (Tom: F#/G♭, BPM: 120)",
-        "bpm": 120
+        "name": "Patience",
+        "bpm": 120,
+        "author": "Guns N' Roses",
+        "obs": "",
+        "tom": "F#/G♭"
     },
     {
         "group": "CLIMA EMOCIONAL",
-        "name": "Black – Pearl Jam (feat. Vinícius na GT2) (Tom: E minor, BPM: 77)",
-        "bpm": 77
+        "name": "Black",
+        "bpm": 77,
+        "author": "Pearl Jam",
+        "obs": "feat. Vinícius na GT2",
+        "tom": "E minor"
     },
     {
         "group": "BALADAS INTERNACIONAIS",
-        "name": "Still Loving You – Scorpions (Tom: D#m, BPM: 104)",
-        "bpm": 104
+        "name": "Still Loving You",
+        "bpm": 104,
+        "author": "Scorpions",
+        "obs": "",
+        "tom": "D#m"
     },
     {
         "group": "BALADAS INTERNACIONAIS",
-        "name": "Lover Why – Century (Tom: G#/A♭ minor, BPM: 135)",
-        "bpm": 135
+        "name": "Lover Why",
+        "bpm": 135,
+        "author": "Century",
+        "obs": "",
+        "tom": "G#/A♭ minor"
     },
     {
         "group": "BLOCO NACIONAL",
-        "name": "Exagerado – Cazuza (Tom: G, BPM: 136)",
-        "bpm": 136
+        "name": "Exagerado",
+        "bpm": 136,
+        "author": "Cazuza",
+        "obs": "",
+        "tom": "G"
     },
     {
         "group": "BLOCO NACIONAL",
-        "name": "Olhos certos – Detonautas (Léo no violão) (Tom: C♯/D♭ minor, BPM: 95)",
-        "bpm": 95
+        "name": "Olhos certos",
+        "bpm": 95,
+        "author": "Detonautas",
+        "obs": "Léo no violão",
+        "tom": "C♯/D♭ minor"
     },
     {
         "group": "BLOCO NACIONAL",
-        "name": "Primeiros Erros (Chove) – Capital Inicial (Léo no violão) (Tom: D, BPM: 120)",
-        "bpm": 120
+        "name": "Primeiros Erros (Chove)",
+        "bpm": 120,
+        "author": "Capital Inicial",
+        "obs": "Léo no violão",
+        "tom": "D"
     },
     {
         "group": "RETORNO AO PALCO",
-        "name": "Wanted Dead Or Alive – Bon Jovi (Tom: G, BPM: 150)",
-        "bpm": 150
+        "name": "Wanted Dead Or Alive",
+        "bpm": 150,
+        "author": "Bon Jovi",
+        "obs": "",
+        "tom": "G"
     },
     {
         "group": "RETORNO DA BANDA",
-        "name": "À Sua Maneira – Capital Inicial (Léo no violão) (Tom: B minor, BPM: 113)",
-        "bpm": 113
+        "name": "À Sua Maneira",
+        "bpm": 113,
+        "author": "Capital Inicial",
+        "obs": "Léo no violão",
+        "tom": "B minor"
     },
     {
         "group": "RETORNO DA BANDA",
-        "name": "Será – Legião Urbana (Tom: C, BPM: 194)",
-        "bpm": 194
+        "name": "Será",
+        "bpm": 194,
+        "author": "Legião Urbana",
+        "obs": "",
+        "tom": "C"
     },
     {
         "group": "RETORNO DA BANDA",
-        "name": "Tempo Perdido – Legião Urbana (Tom: E minor, BPM: 186)",
-        "bpm": 186
+        "name": "Tempo Perdido",
+        "bpm": 186,
+        "author": "Legião Urbana",
+        "obs": "",
+        "tom": "E minor"
     },
     {
         "group": "PRÉ-CLÍMAX",
-        "name": "Baby Can I Hold You – Tracy Chapman (Tom: D, BPM: 74)",
-        "bpm": 74
+        "name": "Baby Can I Hold You",
+        "bpm": 74,
+        "author": "Tracy Chapman",
+        "obs": "",
+        "tom": "D"
     },
     {
         "group": "PRÉ-CLÍMAX",
-        "name": "Have You Ever Seen The Rain – Creedence Clearwater Revival (Tom: C, BPM: 116)",
-        "bpm": 116
+        "name": "Have You Ever Seen The Rain",
+        "bpm": 116,
+        "author": "Creedence Clearwater Revival",
+        "obs": "",
+        "tom": "C"
     },
     {
         "group": "PRÉ-CLÍMAX",
-        "name": "Wherever You Will Go – The Calling (Tom: D, BPM: 112)",
-        "bpm": 112
+        "name": "Wherever You Will Go",
+        "bpm": 112,
+        "author": "The Calling",
+        "obs": "",
+        "tom": "D"
     },
     {
         "group": "PRÉ-CLÍMAX",
-        "name": "Wish You Were Here – Pink Floyd (Tom: G, BPM: 123)",
-        "bpm": 123
+        "name": "Wish You Were Here",
+        "bpm": 123,
+        "author": "Pink Floyd",
+        "obs": "",
+        "tom": "G"
     },
     {
         "group": "PRÉ-CLÍMAX",
-        "name": "Wicked Game – Chris Isaak (feat. Brankko) (Tom: A, BPM: 112)",
-        "bpm": 112
+        "name": "Wicked Game",
+        "bpm": 112,
+        "author": "Chris Isaak",
+        "obs": "feat. Brankko",
+        "tom": "A"
     },
     {
         "group": "BLOCO EM Dm",
-        "name": "Another Brick in the Wall – Pink Floyd (Tom: Dm, BPM: 104)",
-        "bpm": 104
+        "name": "Another Brick in the Wall",
+        "bpm": 104,
+        "author": "Pink Floyd",
+        "obs": "",
+        "tom": "Dm"
     },
     {
         "group": "BLOCO EM Dm",
-        "name": "Alvorada Voraz – RPM (Tom: D minor, BPM: 135)",
-        "bpm": 135
+        "name": "Alvorada Voraz",
+        "bpm": 135,
+        "author": "RPM",
+        "obs": "",
+        "tom": "D minor"
     },
     {
         "group": "BLOCO EM Dm",
-        "name": "Malandragem – Cássia Eller (Tom: D minor, BPM: 133)",
-        "bpm": 133
+        "name": "Malandragem",
+        "bpm": 133,
+        "author": "Cássia Eller",
+        "obs": "",
+        "tom": "D minor"
     },
     {
         "group": "BLOCO MAMONAS",
-        "name": "Pelados Em Santos – Mamonas Assassinas (Tom: D, BPM: 136)",
-        "bpm": 136
+        "name": "Pelados Em Santos",
+        "bpm": 136,
+        "author": "Mamonas Assassinas",
+        "obs": "",
+        "tom": "D"
     },
     {
         "group": "BLOCO MAMONAS",
-        "name": "Chopis Centis – Mamonas Assassinas (Tom: A, BPM: 121)",
-        "bpm": 121
+        "name": "Chopis Centis",
+        "bpm": 121,
+        "author": "Mamonas Assassinas",
+        "obs": "",
+        "tom": "A"
     },
     {
         "group": "BLOCO MAMONAS",
-        "name": "Vira-Vira – Mamonas Assassinas (Tom: E, BPM: 202)",
-        "bpm": 202
+        "name": "Vira-Vira",
+        "bpm": 202,
+        "author": "Mamonas Assassinas",
+        "obs": "",
+        "tom": "E"
     },
     {
         "group": "ENCERRAMENTO FINAL",
-        "name": "Metamorfose Ambulante – Raul Seixas (Tom: D, BPM: 136)",
-        "bpm": 136
+        "name": "Metamorfose Ambulante",
+        "bpm": 136,
+        "author": "Raul Seixas",
+        "obs": "",
+        "tom": "D"
     },
     {
         "group": "ENCERRAMENTO FINAL",
-        "name": "O Astronauta de Mármore (Starman) – Nenhum De Nós (feat. Mamãe) (Tom: F, BPM: 107)",
-        "bpm": 107
+        "name": "O Astronauta de Mármore (Starman)",
+        "bpm": 107,
+        "author": "Nenhum De Nós",
+        "obs": "feat. Mamãe",
+        "tom": "F"
     },
     {
         "group": "ENCERRAMENTO FINAL",
-        "name": "Que Pais É Este – Legião Urbana (feat. Windson) (Tom: C, BPM: 146)",
-        "bpm": 146
+        "name": "Que Pais É Este",
+        "bpm": 146,
+        "author": "Legião Urbana",
+        "obs": "feat. Windson",
+        "tom": "C"
     }
 ]
