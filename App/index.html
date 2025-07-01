@@ -321,6 +321,7 @@
         async function loadSongs() {
             try {
                 const resp = await fetch('songs.json');
+                if (!resp.ok) throw new Error('Erro HTTP: ' + resp.status);
                 songs = await resp.json();
                 groups = [];
                 songs.forEach(song => {
@@ -329,17 +330,22 @@
                     }
                     song._group = song.group || 'Outros';
                 });
-                selectedGroup = groups[0];
+                selectedGroup = groups[0] || null;
                 renderGroupList();
                 renderSongList();
                 renderSelectedSong();
             } catch (e) {
-                songListDiv.innerHTML = '<div style="padding:16px">Erro ao carregar lista de músicas.</div>';
+                songListDiv.innerHTML = '<div style="padding:16px;color:#c00;text-align:center">Erro ao carregar lista de músicas.<br>' + (e.message || e) + '</div>';
+                groupListDiv.innerHTML = '';
             }
         }
 
         function renderGroupList() {
             groupListDiv.innerHTML = '';
+            if (groups.length === 0) {
+                groupListDiv.innerHTML = '<div style="padding:12px;color:#888;text-align:center">Nenhum agrupamento encontrado.</div>';
+                return;
+            }
             groups.forEach(group => {
                 const btn = document.createElement('button');
                 btn.textContent = group;
@@ -358,6 +364,10 @@
         function renderSongList() {
             songListDiv.innerHTML = '';
             const filtered = songs.filter(song => song._group === selectedGroup);
+            if (filtered.length === 0) {
+                songListDiv.innerHTML = '<div style="padding:16px;color:#888;text-align:center">Nenhuma música encontrada.</div>';
+                return;
+            }
             filtered.forEach((song, i) => {
                 const item = document.createElement('div');
                 item.className = 'song-list-item';
