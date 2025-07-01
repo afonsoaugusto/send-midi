@@ -1,0 +1,41 @@
+[
+    {
+        "name": "In the Air Tonight – Phil Collins (Tom: C, BPM: 99)",
+        "midi": [
+            {
+                "channel": 74,
+                "value": 0
+            },
+            {
+                "channel": 75,
+                "value": 99
+            }
+        ]
+    },
+    {
+        "name": "Crazy – Seal (Tom: B minor, BPM: 103)",
+        "midi": [
+            {
+                "channel": 74,
+                "value": 0
+            },
+            {
+                "channel": 75,
+                "value": 103
+            }
+        ]
+    },
+    {
+        "name": "Rádio Pirata – RPM (Tom: B, BPM: 153)",
+        "midi": [
+            {
+                "channel": 74,
+                "value": 0
+            },
+            {
+                "channel": 75,
+                "value": 153
+            }
+        ]
+    }
+]

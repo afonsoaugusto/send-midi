@@ -14,52 +14,98 @@
         }
 
         .container {
-            max-width: 500px;
+            display: flex;
+            flex-direction: row;
+            max-width: 700px;
             margin: 40px auto;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 8px #0001;
-            padding: 24px;
+            min-height: 400px;
+            overflow: hidden;
         }
 
-        h1 {
+        .sidebar {
+            width: 220px;
+            background: #f0f0f0;
+            border-right: 1px solid #e0e0e0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
             text-align: center;
+            font-size: 1.1em;
+            margin: 18px 0 10px 0;
+            color: #1976d2;
         }
 
-        .song {
-            border-bottom: 1px solid #eee;
-            padding: 16px 0;
+        .song-list {
+            flex: 1;
+            overflow-y: auto;
         }
 
-        .song:last-child {
-            border-bottom: none;
+        .song-list-item {
+            padding: 14px 18px;
+            cursor: pointer;
+            border-bottom: 1px solid #e0e0e0;
+            background: none;
+            text-align: left;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+
+        .song-list-item.selected,
+        .song-list-item:hover {
+            background: #e3eaff;
+            font-weight: bold;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 24px;
+        }
+
+        .main h1 {
+            text-align: center;
+            margin-bottom: 24px;
         }
 
         .song-title {
             font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
         }
 
         .midi-info {
-            margin: 8px 0 12px 0;
+            margin: 8px 0 18px 0;
             color: #555;
         }
 
-        button {
+        .send-btn {
             background: #1976d2;
             color: #fff;
             border: none;
             border-radius: 4px;
-            padding: 8px 16px;
+            padding: 10px 24px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.1em;
+            transition: background 0.2s;
         }
 
-        button:disabled {
+        .send-btn:disabled,
+        .send-btn.sending {
             background: #aaa;
+            cursor: not-allowed;
         }
 
         .status {
-            margin-top: 16px;
+            margin-top: 18px;
             text-align: center;
             color: #1976d2;
         }
@@ -68,43 +114,83 @@
 
 <body>
     <div class="container">
-        <h1>send-midi</h1>
-        <div id="songs"></div>
-        <div class="status" id="status"></div>
+        <div class="sidebar">
+            <h2>Músicas</h2>
+            <div class="song-list" id="songList"></div>
+        </div>
+        <div class="main">
+            <h1>send-midi</h1>
+            <div id="selectedSong"></div>
+            <div class="status" id="status"></div>
+        </div>
     </div>
     <script>
-        const songs = [
-            {
-                name: "In the Air Tonight – Phil Collins (Tom: C, BPM: 99)",
-                midi: [{ channel: 74, value: 0 }, { channel: 75, value: 99 }]
-            },
-            {
-                name: "Crazy – Seal (Tom: B minor, BPM: 103)",
-                midi: [{ channel: 74, value: 0 }, { channel: 75, value: 103 }]
-            },
-            {
-                name: "Rádio Pirata – RPM (Tom: B, BPM: 153)",
-                midi: [{ channel: 74, value: 0 }, { channel: 75, value: 153 }]
-            }
-        ];
-
-        const songsDiv = document.getElementById('songs');
+        let songs = [];
+        let selectedIdx = 0;
+        const songListDiv = document.getElementById('songList');
+        const selectedSongDiv = document.getElementById('selectedSong');
         const statusDiv = document.getElementById('status');
         let midiAccess = null;
         let midiOutput = null;
+        let sending = false;
 
-        function renderSongs() {
-            songsDiv.innerHTML = '';
+        async function loadSongs() {
+            try {
+                const resp = await fetch('songs.json');
+                songs = await resp.json();
+                renderSongList();
+                renderSelectedSong();
+            } catch (e) {
+                songListDiv.innerHTML = '<div style="padding:16px">Erro ao carregar lista de músicas.</div>';
+            }
+        }
+
+        function renderSongList() {
+            songListDiv.innerHTML = '';
             songs.forEach((song, idx) => {
-                const div = document.createElement('div');
-                div.className = 'song';
-                div.innerHTML = `
-          <div class="song-title">${song.name}</div>
-          <div class="midi-info">Canal MIDI: 74, Value: ${song.midi[0].value} &nbsp;|&nbsp; Canal MIDI: 75, Value: ${song.midi[1].value}</div>
-          <button onclick="sendMidi(${idx})" ${!midiOutput ? 'disabled' : ''}>Enviar MIDI</button>
-        `;
-                songsDiv.appendChild(div);
+                const btn = document.createElement('button');
+                btn.className = 'song-list-item' + (idx === selectedIdx ? ' selected' : '');
+                btn.textContent = song.name;
+                btn.onclick = () => {
+                    selectedIdx = idx;
+                    renderSongList();
+                    renderSelectedSong();
+                };
+                songListDiv.appendChild(btn);
             });
+        }
+
+        function renderSelectedSong() {
+            selectedSongDiv.innerHTML = '';
+            if (!songs[selectedIdx]) return;
+            const song = songs[selectedIdx];
+            const title = document.createElement('div');
+            title.className = 'song-title';
+            title.textContent = song.name;
+            const midiInfo = document.createElement('div');
+            midiInfo.className = 'midi-info';
+            midiInfo.innerHTML = `Canal MIDI: 74, Value: ${song.midi[0].value} &nbsp;|&nbsp; Canal MIDI: 75, Value: ${song.midi[1].value}`;
+            const btn = document.createElement('button');
+            btn.className = 'send-btn' + (sending ? ' sending' : '');
+            btn.textContent = 'Enviar MIDI';
+            btn.disabled = !midiOutput || sending;
+            btn.onclick = async () => {
+                if (!midiOutput || sending) return;
+                sending = true;
+                renderSelectedSong();
+                // Envia duas mensagens simultâneas (Control Change)
+                song.midi.forEach(msg => {
+                    midiOutput.send([0xB0, msg.channel, msg.value]);
+                });
+                statusDiv.textContent = `MIDI enviado para: ${song.name}`;
+                setTimeout(() => {
+                    sending = false;
+                    renderSelectedSong();
+                }, 1200);
+            };
+            selectedSongDiv.appendChild(title);
+            selectedSongDiv.appendChild(midiInfo);
+            selectedSongDiv.appendChild(btn);
         }
 
         async function initMIDI() {
@@ -121,24 +207,13 @@
                 }
                 midiOutput = outputs[0];
                 statusDiv.textContent = 'Dispositivo MIDI pronto: ' + midiOutput.name;
-                renderSongs();
+                renderSelectedSong();
             } catch (e) {
                 statusDiv.textContent = 'Erro ao acessar MIDI: ' + e;
             }
         }
 
-        window.sendMidi = function (idx) {
-            if (!midiOutput) return;
-            const song = songs[idx];
-            // Envia duas mensagens simultâneas (Control Change)
-            song.midi.forEach(msg => {
-                // 0xB0 = 176 = Control Change no canal 1
-                midiOutput.send([0xB0, msg.channel, msg.value]);
-            });
-            statusDiv.textContent = `MIDI enviado para: ${song.name}`;
-        };
-
-        renderSongs();
+        loadSongs();
         initMIDI();
     </script>
 </body>
