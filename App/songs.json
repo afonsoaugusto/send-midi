@@ -13,7 +13,7 @@
         "bpm": 103,
         "author": "Seal",
         "obs": "",
-        "tom": "B minor"
+        "tom": "Bm"
     },
     {
         "group": "COMEÇO EXPLOSIVO",
@@ -37,7 +37,7 @@
         "bpm": 90,
         "author": "Zé Ramalho",
         "obs": "",
-        "tom": "F#/G♭ minor"
+        "tom": "F#/G♭m"
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -53,7 +53,7 @@
         "bpm": 95,
         "author": "Zeca Baleiro",
         "obs": "",
-        "tom": "B minor"
+        "tom": "Bm"
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -93,7 +93,7 @@
         "bpm": 133,
         "author": "O Surto",
         "obs": "feat. Diego",
-        "tom": "C minor (1 Tom Abaixo)"
+        "tom": "Cm (1 Tom Abaixo)"
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
@@ -101,7 +101,7 @@
         "bpm": 105,
         "author": "Linkin Park",
         "obs": "feat. Hinner Caldeira",
-        "tom": "D#/E♭ minor"
+        "tom": "D#/E♭m"
     },
     {
         "group": "CLIMA EMOCIONAL",
@@ -125,7 +125,7 @@
         "bpm": 77,
         "author": "Pearl Jam",
         "obs": "feat. Vinícius na GT2",
-        "tom": "E minor"
+        "tom": "Em"
     },
     {
         "group": "BALADAS INTERNACIONAIS",
@@ -141,7 +141,7 @@
         "bpm": 135,
         "author": "Century",
         "obs": "",
-        "tom": "G#/A♭ minor"
+        "tom": "G#/A♭m"
     },
     {
         "group": "BLOCO NACIONAL",
@@ -157,7 +157,7 @@
         "bpm": 95,
         "author": "Detonautas",
         "obs": "Léo no violão",
-        "tom": "C♯/D♭ minor"
+        "tom": "C♯/D♭m"
     },
     {
         "group": "BLOCO NACIONAL",
@@ -181,7 +181,7 @@
         "bpm": 113,
         "author": "Capital Inicial",
         "obs": "Léo no violão",
-        "tom": "B minor"
+        "tom": "Bm"
     },
     {
         "group": "RETORNO DA BANDA",
@@ -197,7 +197,7 @@
         "bpm": 186,
         "author": "Legião Urbana",
         "obs": "",
-        "tom": "E minor"
+        "tom": "Em"
     },
     {
         "group": "PRÉ-CLÍMAX",
@@ -253,7 +253,7 @@
         "bpm": 135,
         "author": "RPM",
         "obs": "",
-        "tom": "D minor"
+        "tom": "Dm"
     },
     {
         "group": "BLOCO EM Dm",
@@ -261,7 +261,7 @@
         "bpm": 133,
         "author": "Cássia Eller",
         "obs": "",
-        "tom": "D minor"
+        "tom": "Dm"
     },
     {
         "group": "BLOCO MAMONAS",
