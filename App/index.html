@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>send-midi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 24px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .song {
+            border-bottom: 1px solid #eee;
+            padding: 16px 0;
+        }
+
+        .song:last-child {
+            border-bottom: none;
+        }
+
+        .song-title {
+            font-weight: bold;
+        }
+
+        .midi-info {
+            margin: 8px 0 12px 0;
+            color: #555;
+        }
+
+        button {
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:disabled {
+            background: #aaa;
+        }
+
+        .status {
+            margin-top: 16px;
+            text-align: center;
+            color: #1976d2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>send-midi</h1>
+        <div id="songs"></div>
+        <div class="status" id="status"></div>
+    </div>
+    <script>
+        const songs = [
+            {
+                name: "In the Air Tonight – Phil Collins (Tom: C, BPM: 99)",
+                midi: [{ channel: 74, value: 0 }, { channel: 75, value: 99 }]
+            },
+            {
+                name: "Crazy – Seal (Tom: B minor, BPM: 103)",
+                midi: [{ channel: 74, value: 0 }, { channel: 75, value: 103 }]
+            },
+            {
+                name: "Rádio Pirata – RPM (Tom: B, BPM: 153)",
+                midi: [{ channel: 74, value: 0 }, { channel: 75, value: 153 }]
+            }
+        ];
+
+        const songsDiv = document.getElementById('songs');
+        const statusDiv = document.getElementById('status');
+        let midiAccess = null;
+        let midiOutput = null;
+
+        function renderSongs() {
+            songsDiv.innerHTML = '';
+            songs.forEach((song, idx) => {
+                const div = document.createElement('div');
+                div.className = 'song';
+                div.innerHTML = `
+          <div class="song-title">${song.name}</div>
+          <div class="midi-info">Canal MIDI: 74, Value: ${song.midi[0].value} &nbsp;|&nbsp; Canal MIDI: 75, Value: ${song.midi[1].value}</div>
+          <button onclick="sendMidi(${idx})" ${!midiOutput ? 'disabled' : ''}>Enviar MIDI</button>
+        `;
+                songsDiv.appendChild(div);
+            });
+        }
+
+        async function initMIDI() {
+            if (!navigator.requestMIDIAccess) {
+                statusDiv.textContent = 'Web MIDI API não suportada neste navegador.';
+                return;
+            }
+            try {
+                midiAccess = await navigator.requestMIDIAccess();
+                const outputs = Array.from(midiAccess.outputs.values());
+                if (outputs.length === 0) {
+                    statusDiv.textContent = 'Nenhum dispositivo MIDI encontrado.';
+                    return;
+                }
+                midiOutput = outputs[0];
+                statusDiv.textContent = 'Dispositivo MIDI pronto: ' + midiOutput.name;
+                renderSongs();
+            } catch (e) {
+                statusDiv.textContent = 'Erro ao acessar MIDI: ' + e;
+            }
+        }
+
+        window.sendMidi = function (idx) {
+            if (!midiOutput) return;
+            const song = songs[idx];
+            // Envia duas mensagens simultâneas (Control Change)
+            song.midi.forEach(msg => {
+                // 0xB0 = 176 = Control Change no canal 1
+                midiOutput.send([0xB0, msg.channel, msg.value]);
+            });
+            statusDiv.textContent = `MIDI enviado para: ${song.name}`;
+        };
+
+        renderSongs();
+        initMIDI();
+    </script>
+</body>
+
+</html>
