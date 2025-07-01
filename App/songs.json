@@ -1,14 +1,197 @@
 [
     {
+        "group": "INTRO MISTERIOSA",
         "name": "In the Air Tonight – Phil Collins (Tom: C, BPM: 99)",
         "bpm": 99
     },
     {
+        "group": "COMEÇO EXPLOSIVO",
         "name": "Crazy – Seal (Tom: B minor, BPM: 103)",
         "bpm": 103
     },
     {
+        "group": "COMEÇO EXPLOSIVO",
         "name": "Rádio Pirata – RPM (Tom: B, BPM: 153)",
         "bpm": 153
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Achy Breaky Heart – Billy Ray Cyrus (Tom: A, BPM: 122)",
+        "bpm": 122
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Garoto de Aluguel – Zé Ramalho (Tom: F#/G♭ minor, BPM: 90)",
+        "bpm": 90
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Pais E Filhos – Legião Urbana (Tom: G, BPM: 90)",
+        "bpm": 90
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Telegrama – Zeca Baleiro (Tom: B minor, BPM: 95)",
+        "bpm": 95
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Sem Radar – Ls Jack (Tom: F#/G♭, BPM: 76)",
+        "bpm": 76
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Chão de Giz – Zé Ramalho (Tom: G, BPM: 144)",
+        "bpm": 144
+    },
+    {
+        "group": "BLOCO VIOLÃO",
+        "name": "Um Minuto Para O Fim Do Mundo – CPM 22 (Tom: C, BPM: 127)",
+        "bpm": 127
+    },
+    {
+        "group": "CONVIDADOS ESPECIAIS",
+        "name": "Mulher de fases – Raimundos (feat. Thammer) (Tom: G, BPM: 132)",
+        "bpm": 132
+    },
+    {
+        "group": "CONVIDADOS ESPECIAIS",
+        "name": "A Cera – O Surto (feat. Diego) (Tom: C minor (1 Tom Abaixo), BPM: 133)",
+        "bpm": 133
+    },
+    {
+        "group": "CONVIDADOS ESPECIAIS",
+        "name": "In the End – Linkin Park (feat. Hinner Caldeira) (Tom: D#/E♭ minor, BPM: 105)",
+        "bpm": 105
+    },
+    {
+        "group": "CLIMA EMOCIONAL",
+        "name": "Last Kiss – Pearl Jam (Tom: G, BPM: 112)",
+        "bpm": 112
+    },
+    {
+        "group": "CLIMA EMOCIONAL",
+        "name": "Patience – Guns N' Roses (Tom: F#/G♭, BPM: 120)",
+        "bpm": 120
+    },
+    {
+        "group": "CLIMA EMOCIONAL",
+        "name": "Black – Pearl Jam (feat. Vinícius na GT2) (Tom: E minor, BPM: 77)",
+        "bpm": 77
+    },
+    {
+        "group": "BALADAS INTERNACIONAIS",
+        "name": "Still Loving You – Scorpions (Tom: D#m, BPM: 104)",
+        "bpm": 104
+    },
+    {
+        "group": "BALADAS INTERNACIONAIS",
+        "name": "Lover Why – Century (Tom: G#/A♭ minor, BPM: 135)",
+        "bpm": 135
+    },
+    {
+        "group": "BLOCO NACIONAL",
+        "name": "Exagerado – Cazuza (Tom: G, BPM: 136)",
+        "bpm": 136
+    },
+    {
+        "group": "BLOCO NACIONAL",
+        "name": "Olhos certos – Detonautas (Léo no violão) (Tom: C♯/D♭ minor, BPM: 95)",
+        "bpm": 95
+    },
+    {
+        "group": "BLOCO NACIONAL",
+        "name": "Primeiros Erros (Chove) – Capital Inicial (Léo no violão) (Tom: D, BPM: 120)",
+        "bpm": 120
+    },
+    {
+        "group": "RETORNO AO PALCO",
+        "name": "Wanted Dead Or Alive – Bon Jovi (Tom: G, BPM: 150)",
+        "bpm": 150
+    },
+    {
+        "group": "RETORNO DA BANDA",
+        "name": "À Sua Maneira – Capital Inicial (Léo no violão) (Tom: B minor, BPM: 113)",
+        "bpm": 113
+    },
+    {
+        "group": "RETORNO DA BANDA",
+        "name": "Será – Legião Urbana (Tom: C, BPM: 194)",
+        "bpm": 194
+    },
+    {
+        "group": "RETORNO DA BANDA",
+        "name": "Tempo Perdido – Legião Urbana (Tom: E minor, BPM: 186)",
+        "bpm": 186
+    },
+    {
+        "group": "PRÉ-CLÍMAX",
+        "name": "Baby Can I Hold You – Tracy Chapman (Tom: D, BPM: 74)",
+        "bpm": 74
+    },
+    {
+        "group": "PRÉ-CLÍMAX",
+        "name": "Have You Ever Seen The Rain – Creedence Clearwater Revival (Tom: C, BPM: 116)",
+        "bpm": 116
+    },
+    {
+        "group": "PRÉ-CLÍMAX",
+        "name": "Wherever You Will Go – The Calling (Tom: D, BPM: 112)",
+        "bpm": 112
+    },
+    {
+        "group": "PRÉ-CLÍMAX",
+        "name": "Wish You Were Here – Pink Floyd (Tom: G, BPM: 123)",
+        "bpm": 123
+    },
+    {
+        "group": "PRÉ-CLÍMAX",
+        "name": "Wicked Game – Chris Isaak (feat. Brankko) (Tom: A, BPM: 112)",
+        "bpm": 112
+    },
+    {
+        "group": "BLOCO EM Dm",
+        "name": "Another Brick in the Wall – Pink Floyd (Tom: Dm, BPM: 104)",
+        "bpm": 104
+    },
+    {
+        "group": "BLOCO EM Dm",
+        "name": "Alvorada Voraz – RPM (Tom: D minor, BPM: 135)",
+        "bpm": 135
+    },
+    {
+        "group": "BLOCO EM Dm",
+        "name": "Malandragem – Cássia Eller (Tom: D minor, BPM: 133)",
+        "bpm": 133
+    },
+    {
+        "group": "BLOCO MAMONAS",
+        "name": "Pelados Em Santos – Mamonas Assassinas (Tom: D, BPM: 136)",
+        "bpm": 136
+    },
+    {
+        "group": "BLOCO MAMONAS",
+        "name": "Chopis Centis – Mamonas Assassinas (Tom: A, BPM: 121)",
+        "bpm": 121
+    },
+    {
+        "group": "BLOCO MAMONAS",
+        "name": "Vira-Vira – Mamonas Assassinas (Tom: E, BPM: 202)",
+        "bpm": 202
+    },
+    {
+        "group": "ENCERRAMENTO FINAL",
+        "name": "Metamorfose Ambulante – Raul Seixas (Tom: D, BPM: 136)",
+        "bpm": 136
+    },
+    {
+        "group": "ENCERRAMENTO FINAL",
+        "name": "O Astronauta de Mármore (Starman) – Nenhum De Nós (feat. Mamãe) (Tom: F, BPM: 107)",
+        "bpm": 107
+    },
+    {
+        "group": "ENCERRAMENTO FINAL",
+        "name": "Que Pais É Este – Legião Urbana (feat. Windson) (Tom: C, BPM: 146)",
+        "bpm": 146
     }
 ]
