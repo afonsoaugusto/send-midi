@@ -4,293 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>send-midi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* container/sidebar removed for new layout */
-        .main-container {
-            max-width: 1100px;
-            margin: 32px auto 0 auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px #0001;
-            padding: 24px 16px 32px 16px;
-        }
-
-        .app-title {
-            text-align: center;
-            margin-bottom: 18px;
-            font-size: 2em;
-        }
-
-        .connect-btn {
-            margin-bottom: 18px;
-            padding: 8px 18px;
-            border-radius: 4px;
-            border: none;
-            background: #1976d2;
-            color: #fff;
-            font-size: 1em;
-            cursor: pointer;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .status {
-            margin-bottom: 18px;
-            text-align: center;
-            color: #1976d2;
-        }
-
-        .columns {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: flex-start;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .col {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 8px 4px 8px 4px;
-            min-width: 220px;
-            flex: 1 1 320px;
-            max-width: 420px;
-            box-sizing: border-box;
-        }
-
-        .col-groups {
-            min-width: 160px;
-            max-width: 220px;
-        }
-
-        .col-songs {
-            min-width: 220px;
-            max-width: 420px;
-            overflow-x: hidden;
-        }
-
-        .col h2 {
-            text-align: center;
-            font-size: 1.1em;
-            color: #1976d2;
-            margin-bottom: 12px;
-        }
-
-        .song-list {
-            max-height: 60vh;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        .song-list-item {
-            padding: 6px 4px;
-            cursor: pointer;
-            border-bottom: 1px solid #e0e0e0;
-            background: none;
-            text-align: left;
-            font-size: 1em;
-            transition: background 0.2s;
-            width: 100%;
-            border-radius: 4px;
-            margin-bottom: 1px;
-            box-sizing: border-box;
-        }
-
-        .song-list-item.selected,
-        .song-list-item:hover {
-            background: #e3eaff;
-            font-weight: bold;
-        }
-
-        .selected-song-panel {
-            max-width: 340px;
-            margin: 0;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px #0001;
-            padding: 24px 18px 32px 18px;
-            min-height: 120px;
-        }
-
-        .song-title {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .song-author,
-        .song-tonality,
-        .song-bpm {
-            margin-bottom: 6px;
-            color: #555;
-        }
-
-        .midi-info {
-            margin: 8px 0 18px 0;
-            color: #555;
-        }
-
-        .send-btn {
-            background: #1976d2;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 24px;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: background 0.2s;
-            margin-top: 10px;
-        }
-
-        .send-btn:disabled,
-        .send-btn.sending {
-            background: #aaa;
-            cursor: not-allowed;
-        }
-
-        @media (max-width: 900px) {
-            .col-songs>div {
-                flex-direction: column !important;
-            }
-
-            .selected-song-panel {
-                max-width: 100vw;
-                margin-top: 18px;
-            }
-
-            .main-container {
-                max-width: 98vw;
-                padding: 10px 2vw 24px 2vw;
-            }
-
-            .columns {
-                flex-direction: column;
-                gap: 18px;
-            }
-
-            .col {
-                max-width: 100vw;
-                min-width: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .col-songs>div {
-                flex-direction: column !important;
-            }
-
-            .selected-song-panel {
-                max-width: 100vw;
-                border-radius: 0;
-                box-shadow: none;
-                padding: 18px 4vw 24px 4vw;
-                margin-top: 12px;
-            }
-
-            .main-container {
-                max-width: 100vw;
-                padding: 0 0 16px 0;
-                border-radius: 0;
-                box-shadow: none;
-            }
-
-            .selected-song-panel {
-                max-width: 100vw;
-                border-radius: 0;
-                box-shadow: none;
-                padding: 18px 4vw 24px 4vw;
-            }
-
-            .columns {
-                gap: 8px;
-            }
-        }
-
-        .song-list {
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .song-list-item {
-            padding: 14px 18px;
-            cursor: pointer;
-            border-bottom: 1px solid #e0e0e0;
-            background: none;
-            text-align: left;
-            font-size: 1em;
-            transition: background 0.2s;
-        }
-
-        .song-list-item.selected,
-        .song-list-item:hover {
-            background: #e3eaff;
-            font-weight: bold;
-        }
-
-        .main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 32px 24px;
-        }
-
-        .main h1 {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .song-title {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .midi-info {
-            margin: 8px 0 18px 0;
-            color: #555;
-        }
-
-        .send-btn {
-            background: #1976d2;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 24px;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: background 0.2s;
-        }
-
-        .send-btn:disabled,
-        .send-btn.sending {
-            background: #aaa;
-            cursor: not-allowed;
-        }
-
-        .status {
-            margin-top: 18px;
-            text-align: center;
-            color: #1976d2;
-        }
-    </style>
+    <title>Send Midi</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="main-container">
         <h1 class="app-title">send-midi</h1>
-        <button id="connectMidiBtn" class="connect-btn">Conectar MIDI Bluetooth</button>
+        <div class="top-buttons">
+            <button id="btnPlay" class="btn-play">Play</button>
+            <button id="btnPause" class="btn-pause">Pause</button>
+            <button id="btn20Sec" class="btn-20sec">20 Sec</button>
+        </div>
         <div class="status" id="status"></div>
         <div class="columns">
             <div class="col col-groups">
@@ -303,163 +28,52 @@
             </div>
         </div>
     </div>
+    <div class="preset-buttons" style="max-width:340px;margin:18px auto 0 auto;text-align:center;">
+        <button id="btnPreset14" class="btn-preset">1/4</button>
+        <button id="btnPreset44" class="btn-preset">4/4</button>
+        <button id="btnPresetRock" class="btn-preset">Rock</button>
+        <button id="btnPresetPop" class="btn-preset">Pop</button>
+    </div>
+    <div class="status" id="status" style="margin-bottom:18px;margin-top:32px;"></div>
+    <button id="connectMidiBtn" class="connect-btn">Conectar MIDI Bluetooth</button>
+    <div class="slider-container" style="max-width:340px;margin:32px auto 0 auto;text-align:center;">
+        <label for="secSlider" style="font-size:1.1em;">Tempo do botão <b>20 Sec</b>: <span id="secValue">20</span>
+            segundos</label><br>
+        <input type="range" id="secSlider" min="0" max="40" value="20" style="width:220px;margin-top:10px;">
+    </div>
     <!-- seleção de música removida -->
     <script src="midi-utils.js"></script>
-    <script>
-        let songs = [];
-        let groups = [];
-        let selectedGroup = null;
-        let selectedIdx = 0;
-        const groupListDiv = document.getElementById('groupList');
-        const songListDiv = document.getElementById('songList');
-        const selectedSongDiv = document.getElementById('selectedSong');
-        const statusDiv = document.getElementById('status');
-        let midiAccess = null;
-        let midiOutput = null;
-        let sending = false;
+    <script type="module">
+        import { loadSongsApp, renderGroupListApp, renderSongListApp, renderSelectedSongApp, initMIDIApp, setupConnectMidiBtnApp } from './midi-utils.js';
 
-        async function loadSongs() {
-            try {
-                const resp = await fetch('songs.json');
-                if (!resp.ok) throw new Error('Erro HTTP: ' + resp.status);
-                songs = await resp.json();
-                groups = [];
-                songs.forEach(song => {
-                    if (song.group && !groups.includes(song.group)) {
-                        groups.push(song.group);
-                    }
-                    song._group = song.group || 'Outros';
-                });
-                selectedGroup = groups[0] || null;
-                renderGroupList();
-                renderSongList();
-                renderSelectedSong();
-            } catch (e) {
-                songListDiv.innerHTML = '<div style="padding:16px;color:#c00;text-align:center">Erro ao carregar lista de músicas.<br>' + (e.message || e) + '</div>';
-                groupListDiv.innerHTML = '';
-            }
-        }
+        const ctx = {
+            songs: [],
+            groups: [],
+            selectedGroup: null,
+            selectedIdx: 0,
+            groupListDiv: document.getElementById('groupList'),
+            songListDiv: document.getElementById('songList'),
+            selectedSongDiv: document.getElementById('selectedSong'),
+            statusDiv: document.getElementById('status'),
+            midiAccess: null,
+            midiOutput: null,
+            sending: false,
+        };
 
-        function renderGroupList() {
-            groupListDiv.innerHTML = '';
-            if (groups.length === 0) {
-                groupListDiv.innerHTML = '<div style="padding:12px;color:#888;text-align:center">Nenhum agrupamento encontrado.</div>';
-                return;
-            }
-            groups.forEach(group => {
-                const btn = document.createElement('button');
-                btn.textContent = group;
-                btn.style = 'display:block;width:100%;margin-bottom:6px;padding:8px 10px;border-radius:4px;border:1px solid #1976d2;background:' + (group === selectedGroup ? '#e3eaff' : '#fff') + ';color:#1976d2;cursor:pointer;font-weight:' + (group === selectedGroup ? 'bold' : 'normal') + ';';
-                btn.onclick = () => {
-                    selectedGroup = group;
-                    selectedIdx = 0;
-                    renderGroupList();
-                    renderSongList();
-                    renderSelectedSong();
-                };
-                groupListDiv.appendChild(btn);
-            });
-        }
+        ctx.renderGroupList = renderGroupListApp(ctx);
+        ctx.renderSongList = renderSongListApp(ctx);
+        ctx.renderSelectedSong = renderSelectedSongApp(ctx);
+        ctx.initMIDI = initMIDIApp(ctx);
 
-        function renderSongList() {
-            songListDiv.innerHTML = '';
-            const filtered = songs.filter(song => song._group === selectedGroup);
-            if (filtered.length === 0) {
-                songListDiv.innerHTML = '<div style="padding:16px;color:#888;text-align:center">Nenhuma música encontrada.</div>';
-                return;
-            }
-            filtered.forEach((song, i) => {
-                const item = document.createElement('div');
-                item.className = 'song-list-item';
-                item.style.display = 'flex';
-                item.style.alignItems = 'center';
-                item.style.gap = '12px';
+        const loadSongs = loadSongsApp(ctx);
 
-                let infoDiv = document.createElement('div');
-                infoDiv.style.flex = '1';
-                let name = song.name;
-                let artist = '';
-                let tonality = '';
-                let bpm = song.bpm;
-                let match = name.match(/–\s*([^\(\-]+)(\(|$)/);
-                if (match) artist = match[1].trim();
-                let tomMatch = name.match(/Tom: ([^,\)]+)/i);
-                if (tomMatch) tonality = tomMatch[1].trim();
-                let bpmMatch = name.match(/BPM: (\d+)/i);
-                if (bpmMatch) bpm = bpmMatch[1];
-                let info = `<div class='song-title'>${name.split('–')[1] ? name.split('–')[1].split('(')[0].trim() : name}</div>`;
-                if (artist) info += `<div class='song-author'>Artista: ${artist}</div>`;
-                if (tonality) info += `<div class='song-tonality'>Tom: ${tonality}</div>`;
-                if (bpm) info += `<div class='song-bpm'>BPM: ${bpm}</div>`;
-                infoDiv.innerHTML = info;
-
-                // Botão enviar MIDI
-                const btn = document.createElement('button');
-                btn.className = 'send-btn';
-                btn.textContent = 'Enviar MIDI';
-                let midiMsgs = convertBPMToMidi(song.bpm);
-                btn.disabled = !midiOutput || !midiMsgs;
-                btn.onclick = async () => {
-                    if (!midiOutput || !midiMsgs) return;
-                    btn.disabled = true;
-                    btn.textContent = 'Enviando...';
-                    midiMsgs.forEach(msg => {
-                        midiOutput.send([0xB0, msg.channel, msg.value]);
-                    });
-                    statusDiv.textContent = `MIDI enviado para BPM: ${song.bpm}`;
-                    setTimeout(() => {
-                        btn.disabled = false;
-                        btn.textContent = 'Enviar MIDI';
-                    }, 1200);
-                };
-
-                item.appendChild(infoDiv);
-                item.appendChild(btn);
-                songListDiv.appendChild(item);
-            });
-        }
-
-        function renderSelectedSong() {
-            // Função agora não faz nada, pois a seleção foi removida
-            const panel = document.getElementById('selectedSong');
-            if (panel) panel.innerHTML = '';
-        }
-
-        async function initMIDI(options = {}) {
-            if (!navigator.requestMIDIAccess) {
-                statusDiv.textContent = 'Web MIDI API não suportada neste navegador.';
-                return;
-            }
-            try {
-                // Tenta com opções customizadas se fornecidas
-                midiAccess = await navigator.requestMIDIAccess(options);
-                const outputs = Array.from(midiAccess.outputs.values());
-                if (outputs.length === 0) {
-                    statusDiv.textContent = 'Nenhum dispositivo MIDI encontrado.';
-                    return;
-                }
-                midiOutput = outputs[0];
-                statusDiv.textContent = 'Dispositivo MIDI pronto: ' + midiOutput.name;
-                renderSelectedSong();
-            } catch (e) {
-                statusDiv.textContent = 'Erro ao acessar MIDI: ' + e;
-            }
-        }
-
-        // Botão para conectar MIDI Bluetooth
-        document.addEventListener('DOMContentLoaded', function () {
-            const btn = document.getElementById('connectMidiBtn');
-            if (btn) {
-                btn.onclick = async () => {
-                    statusDiv.textContent = 'Solicitando conexão MIDI Bluetooth...';
-                    await initMIDI({ sysex: true, software: true });
-                };
-            }
-        });
+        setupConnectMidiBtnApp(ctx);
+        import { setupTopButtons, setupPresetButtons } from './midi-utils.js';
+        setupTopButtons(ctx);
+        setupPresetButtons(ctx);
 
         loadSongs();
-        // Inicializa MIDI sem opções para detectar dispositivos USB/MIDI padrão
-        initMIDI();
+        ctx.initMIDI();
     </script>
 </body>
 
