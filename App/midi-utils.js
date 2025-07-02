@@ -142,6 +142,12 @@ export function renderSongListApp(ctx) {
             item.style.alignItems = 'center';
             item.style.gap = '12px';
 
+            // Destaque suave para músicas com color true
+            if (song.color === true) {
+                item.style.background = '#f3f7ff'; // azul bem claro
+                item.style.borderLeft = '5px solid #90caf9'; // azul suave
+            }
+
             let infoDiv = document.createElement('div');
             infoDiv.style.flex = '1';
             let info = `<div class='song-title'><b>${song.title || song.name}</b></div>`;

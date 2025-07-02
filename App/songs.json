@@ -5,7 +5,8 @@
         "bpm": 99,
         "author": "Phil Collins",
         "obs": "",
-        "tom": "C"
+        "tom": "C",
+        "color": true
     },
     {
         "group": "COMEÇO EXPLOSIVO",
@@ -13,7 +14,8 @@
         "bpm": 103,
         "author": "Seal",
         "obs": "",
-        "tom": "Bm"
+        "tom": "Bm",
+        "color": true
     },
     {
         "group": "COMEÇO EXPLOSIVO",
@@ -21,7 +23,8 @@
         "bpm": 153,
         "author": "RPM",
         "obs": "",
-        "tom": "B"
+        "tom": "B",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -29,7 +32,8 @@
         "bpm": 122,
         "author": "Billy Ray Cyrus",
         "obs": "",
-        "tom": "A"
+        "tom": "A",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -37,7 +41,8 @@
         "bpm": 90,
         "author": "Zé Ramalho",
         "obs": "",
-        "tom": "F#/G♭m"
+        "tom": "F#/G♭m",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -45,7 +50,8 @@
         "bpm": 90,
         "author": "Legião Urbana",
         "obs": "",
-        "tom": "G"
+        "tom": "G",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -53,7 +59,8 @@
         "bpm": 95,
         "author": "Zeca Baleiro",
         "obs": "",
-        "tom": "Bm"
+        "tom": "Bm",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -61,7 +68,8 @@
         "bpm": 76,
         "author": "Ls Jack",
         "obs": "",
-        "tom": "F#/G♭"
+        "tom": "F#/G♭",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -69,7 +77,8 @@
         "bpm": 144,
         "author": "Zé Ramalho",
         "obs": "",
-        "tom": "G"
+        "tom": "G",
+        "color": false
     },
     {
         "group": "BLOCO VIOLÃO",
@@ -77,7 +86,8 @@
         "bpm": 127,
         "author": "CPM 22",
         "obs": "",
-        "tom": "C"
+        "tom": "C",
+        "color": false
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
@@ -85,7 +95,8 @@
         "bpm": 132,
         "author": "Raimundos",
         "obs": "feat. Thammer",
-        "tom": "G"
+        "tom": "G",
+        "color": false
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
@@ -93,7 +104,8 @@
         "bpm": 133,
         "author": "O Surto",
         "obs": "feat. Diego",
-        "tom": "Cm (1 Tom Abaixo)"
+        "tom": "Cm (1 Tom Abaixo)",
+        "color": true
     },
     {
         "group": "CONVIDADOS ESPECIAIS",
@@ -101,7 +113,8 @@
         "bpm": 105,
         "author": "Linkin Park",
         "obs": "feat. Hinner Caldeira",
-        "tom": "D#/E♭m"
+        "tom": "D#/E♭m",
+        "color": false
     },
     {
         "group": "CLIMA EMOCIONAL",
@@ -109,7 +122,8 @@
         "bpm": 112,
         "author": "Pearl Jam",
         "obs": "",
-        "tom": "G"
+        "tom": "G",
+        "color": false
     },
     {
         "group": "CLIMA EMOCIONAL",
@@ -117,7 +131,8 @@
         "bpm": 120,
         "author": "Guns N' Roses",
         "obs": "",
-        "tom": "F#/G♭"
+        "tom": "F#/G♭",
+        "color": false
     },
     {
         "group": "CLIMA EMOCIONAL",
@@ -125,7 +140,8 @@
         "bpm": 77,
         "author": "Pearl Jam",
         "obs": "feat. Vinícius na GT2",
-        "tom": "Em"
+        "tom": "Em",
+        "color": false
     },
     {
         "group": "BALADAS INTERNACIONAIS",
@@ -133,7 +149,8 @@
         "bpm": 104,
         "author": "Scorpions",
         "obs": "",
-        "tom": "D#m"
+        "tom": "D#m",
+        "color": true
     },
     {
         "group": "BALADAS INTERNACIONAIS",
