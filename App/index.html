@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send Midi</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -37,14 +38,23 @@
     <div class="status" id="status" style="margin-bottom:18px;margin-top:32px;"></div>
     <button id="connectMidiBtn" class="connect-btn">Conectar MIDI Bluetooth</button>
     <div class="slider-container" style="max-width:340px;margin:32px auto 0 auto;text-align:center;">
-        <label for="secSlider" style="font-size:1.1em;">Tempo do botão <b>20 Sec</b>: <span id="secValue">20</span>
-            segundos</label><br>
-        <input type="range" id="secSlider" min="0" max="40" value="20" style="width:220px;margin-top:10px;">
+        <label for="compassoSlider" style="font-size:1.1em;"><b>Comp</b>: <span id="compassoValue">4</span>
+            compasso(s)</label><br>
+        <input type="range" id="compassoSlider" min="1" max="20" value="2" style="width:220px;margin-top:10px;">
     </div>
     <!-- seleção de música removida -->
-    <script src="midi-utils.js"></script>
     <script type="module">
-        import { loadSongsApp, renderGroupListApp, renderSongListApp, renderSelectedSongApp, initMIDIApp, setupConnectMidiBtnApp } from './midi-utils.js';
+        import {
+            loadSongsApp,
+            renderGroupListApp,
+            renderSongListApp,
+            renderSelectedSongApp,
+            initMIDIApp,
+            setupConnectMidiBtnApp,
+            setupTopButtons,
+            setupPresetButtons,
+            setupCompassoButton
+        } from './midi-utils.js';
 
         const ctx = {
             songs: [],
@@ -68,9 +78,9 @@
         const loadSongs = loadSongsApp(ctx);
 
         setupConnectMidiBtnApp(ctx);
-        import { setupTopButtons, setupPresetButtons } from './midi-utils.js';
         setupTopButtons(ctx);
         setupPresetButtons(ctx);
+        setupCompassoButton(ctx);
 
         loadSongs();
         ctx.initMIDI();

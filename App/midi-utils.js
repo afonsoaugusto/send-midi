@@ -1,4 +1,7 @@
+
 // --- Constantes MIDI e textos dos botões ---
+// MIDI_CC_PLAY e MIDI_CC_PAUSE usam o mesmo CC (37) por padrão neste projeto.
+// Se necessário, altere o valor de MIDI_CC_PAUSE para diferenciar.
 export const MIDI_CC_PLAY = 37;
 export const MIDI_CC_PAUSE = 37;
 export const MIDI_CC_PRESET = 38;
@@ -20,6 +23,91 @@ export const BTN_TEXT_PRESET_44 = '4/4';
 export const BTN_TEXT_PRESET_ROCK = 'Rock';
 export const BTN_TEXT_PRESET_POP = 'Pop';
 
+// --- Funções para botão de compassos (Comp) ---
+import { compassesToSeconds } from './metronome.js';
+
+// Utilitário para feedback visual em botões
+function setButtonLoading(btn, loadingText = 'Enviando...', restoreText = null, delay = 800) {
+    if (!btn) return;
+    const original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = loadingText;
+    setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = restoreText || original;
+    }, delay);
+}
+
+export function setupCompassoButton(ctx) {
+    const compassoSlider = document.getElementById('compassoSlider');
+    const compassoValueSpan = document.getElementById('compassoValue');
+    const btnComp = document.getElementById('btn20Sec');
+    // Constantes para Play/Pause
+    const COMPASSO_CC_PLAY = MIDI_CC_PLAY;
+    const COMPASSO_CC_PAUSE = MIDI_CC_PAUSE;
+    const COMPASSO_VAL_PLAY = MIDI_VAL_PLAY;
+    const COMPASSO_VAL_PAUSE = MIDI_VAL_PAUSE;
+    const COMPASSO_NUMERATOR = 4; // 4/4 fixo
+    const COMPASSO_BPM_DEFAULT = 120;
+
+    if (compassoSlider && compassoValueSpan) {
+        compassoSlider.addEventListener('input', function () {
+            compassoValueSpan.textContent = this.value;
+        });
+    }
+
+    if (btnComp && compassoSlider) {
+        btnComp.textContent = `${compassoSlider.value} Comp`;
+        compassoSlider.addEventListener('input', function () {
+            btnComp.textContent = `${this.value} Comp`;
+        });
+
+        btnComp.onclick = async () => {
+            if (!ctx.midiOutput) {
+                console.warn('Nenhum dispositivo MIDI conectado!');
+                return;
+            }
+            setButtonLoading(btnComp, 'Enviando...', `${compassoSlider.value} Comp`, 800);
+            console.log('Dispositivo MIDI:', ctx.midiOutput ? ctx.midiOutput.name : ctx.midiOutput, ctx.midiOutput);
+            console.log('Enviando PLAY MIDI:', [0xB0, COMPASSO_CC_PLAY, COMPASSO_VAL_PLAY]);
+            try {
+                ctx.midiOutput.send([0xB0, COMPASSO_CC_PLAY, COMPASSO_VAL_PLAY]);
+            } catch (err) {
+                console.error('Erro ao enviar PLAY MIDI:', err);
+                ctx.statusDiv.textContent = 'Erro ao enviar PLAY MIDI: ' + err;
+                return;
+            }
+            // Calcula segundos baseado no BPM da música selecionada (ou padrão 120)
+            let bpm = COMPASSO_BPM_DEFAULT;
+            if (ctx.songs && ctx.selectedGroup) {
+                const filtered = ctx.songs.filter(song => song._group === ctx.selectedGroup);
+                if (filtered[ctx.selectedIdx] && filtered[ctx.selectedIdx].bpm) {
+                    bpm = parseInt(filtered[ctx.selectedIdx].bpm, 10) || COMPASSO_BPM_DEFAULT;
+                }
+            }
+            const nCompasses = parseInt(compassoSlider.value, 10);
+            let seconds = 0;
+            try {
+                seconds = compassesToSeconds({ bpm, compassoNumerator: COMPASSO_NUMERATOR, nCompasses });
+            } catch (e) {
+                // fallback: cada compasso dura 2 segundos (valor arbitrário)
+                seconds = nCompasses * 2;
+            }
+            ctx.statusDiv.textContent = `Play enviado (CC ${COMPASSO_CC_PLAY} value ${COMPASSO_VAL_PLAY}), aguardando ${nCompasses} compasso(s) (${seconds.toFixed(2)}s)...`;
+            await new Promise(res => setTimeout(res, seconds * 1000));
+            console.log('Enviando PAUSE MIDI:', [0xB0, COMPASSO_CC_PAUSE, COMPASSO_VAL_PAUSE]);
+            try {
+                ctx.midiOutput.send([0xB0, COMPASSO_CC_PAUSE, COMPASSO_VAL_PAUSE]);
+            } catch (err) {
+                console.error('Erro ao enviar PAUSE MIDI:', err);
+                ctx.statusDiv.textContent = 'Erro ao enviar PAUSE MIDI: ' + err;
+                return;
+            }
+            ctx.statusDiv.textContent = `Pause enviado após ${nCompasses} compasso(s) (${seconds.toFixed(2)}s)`;
+        };
+    }
+}
+
 // Funções para botões Play, Pause, 20 Sec
 export function setupTopButtons(ctx) {
     const btnPlay = document.getElementById('btnPlay');
@@ -27,28 +115,28 @@ export function setupTopButtons(ctx) {
     const btn20Sec = document.getElementById('btn20Sec');
     if (btnPlay) {
         btnPlay.onclick = async () => {
-            if (!ctx.midiOutput) return;
-            btnPlay.disabled = true;
-            btnPlay.textContent = 'Enviando...';
+            if (!ctx.midiOutput) {
+                console.warn('Nenhum dispositivo MIDI conectado!');
+                return;
+            }
+            setButtonLoading(btnPlay, 'Enviando...', BTN_TEXT_PLAY, 800);
+            console.log('Dispositivo MIDI:', ctx.midiOutput ? ctx.midiOutput.name : ctx.midiOutput, ctx.midiOutput);
+            console.log('Enviando PLAY MIDI:', [0xB0, MIDI_CC_PLAY, MIDI_VAL_PLAY]);
             ctx.midiOutput.send([0xB0, MIDI_CC_PLAY, MIDI_VAL_PLAY]);
             ctx.statusDiv.textContent = `${BTN_TEXT_PLAY} enviado (CC ${MIDI_CC_PLAY} value ${MIDI_VAL_PLAY})`;
-            setTimeout(() => {
-                btnPlay.disabled = false;
-                btnPlay.textContent = BTN_TEXT_PLAY;
-            }, 800);
         };
     }
     if (btnPause) {
         btnPause.onclick = async () => {
-            if (!ctx.midiOutput) return;
-            btnPause.disabled = true;
-            btnPause.textContent = 'Enviando...';
+            if (!ctx.midiOutput) {
+                console.warn('Nenhum dispositivo MIDI conectado!');
+                return;
+            }
+            setButtonLoading(btnPause, 'Enviando...', BTN_TEXT_PAUSE, 800);
+            console.log('Dispositivo MIDI:', ctx.midiOutput ? ctx.midiOutput.name : ctx.midiOutput, ctx.midiOutput);
+            console.log('Enviando PAUSE MIDI:', [0xB0, MIDI_CC_PAUSE, MIDI_VAL_PAUSE]);
             ctx.midiOutput.send([0xB0, MIDI_CC_PAUSE, MIDI_VAL_PAUSE]);
             ctx.statusDiv.textContent = `${BTN_TEXT_PAUSE} enviado (CC ${MIDI_CC_PAUSE} value ${MIDI_VAL_PAUSE})`;
-            setTimeout(() => {
-                btnPause.disabled = false;
-                btnPause.textContent = BTN_TEXT_PAUSE;
-            }, 800);
         };
     }
     if (btn20Sec) {
@@ -57,15 +145,12 @@ export function setupTopButtons(ctx) {
         btn20Sec.textContent = btn20SecText();
         btn20Sec.onclick = async () => {
             if (!ctx.midiOutput) return;
-            btn20Sec.disabled = true;
-            btn20Sec.textContent = 'Enviando...';
+            setButtonLoading(btn20Sec, 'Enviando...', btn20SecText(), secValue * 1000);
             ctx.midiOutput.send([0xB0, MIDI_CC_PLAY, MIDI_VAL_PLAY]);
             ctx.statusDiv.textContent = `${BTN_TEXT_PLAY} enviado (CC ${MIDI_CC_PLAY} value ${MIDI_VAL_PLAY}), aguardando ${secValue}s...`;
             await new Promise(res => setTimeout(res, secValue * 1000));
             ctx.midiOutput.send([0xB0, MIDI_CC_PAUSE, MIDI_VAL_PAUSE]);
             ctx.statusDiv.textContent = `${BTN_TEXT_PAUSE} enviado após ${secValue}s (CC ${MIDI_CC_PAUSE} value ${MIDI_VAL_PAUSE})`;
-            btn20Sec.textContent = btn20SecText();
-            btn20Sec.disabled = false;
         };
         // Slider integration
         const slider = document.getElementById('secSlider');
@@ -165,16 +250,11 @@ export function renderSongListApp(ctx) {
             btn.disabled = !ctx.midiOutput || !midiMsgs;
             btn.onclick = async () => {
                 if (!ctx.midiOutput || !midiMsgs) return;
-                btn.disabled = true;
-                btn.textContent = 'Enviando...';
+                setButtonLoading(btn, 'Enviando...', 'Enviar MIDI', 1200);
                 midiMsgs.forEach(msg => {
-                    ctx.midiOutput.send([0xB0, msg.channel, msg.value]);
+                    ctx.midiOutput.send([0xB0, msg.cc, msg.value]);
                 });
                 ctx.statusDiv.textContent = `MIDI enviado para BPM: ${song.bpm}`;
-                setTimeout(() => {
-                    btn.disabled = false;
-                    btn.textContent = 'Enviar MIDI';
-                }, 1200);
             };
 
             item.appendChild(infoDiv);
@@ -225,26 +305,26 @@ export function setupConnectMidiBtnApp(ctx) {
     });
 }
 // Função para converter BPM em mensagens MIDI conforme a regra fornecida
-// Retorna um array: [{channel: 74, value: X}, {channel: 75, value: Y}]
-function convertBPMToMidi(bpm) {
+// Retorna um array: [{cc: 74, value: X}, {cc: 75, value: Y}]
+export function convertBPMToMidi(bpm) {
     bpm = parseInt(bpm, 10);
     if (isNaN(bpm) || bpm < 40 || bpm > 300) {
         return null;
     }
     if (bpm >= 40 && bpm <= 127) {
         return [
-            { channel: 74, value: 0 },
-            { channel: 75, value: bpm }
+            { cc: 74, value: 0 },
+            { cc: 75, value: bpm }
         ];
     } else if (bpm >= 128 && bpm <= 255) {
         return [
-            { channel: 74, value: 1 },
-            { channel: 75, value: bpm - 128 }
+            { cc: 74, value: 1 },
+            { cc: 75, value: bpm - 128 }
         ];
     } else if (bpm >= 256 && bpm <= 300) {
         return [
-            { channel: 74, value: 2 },
-            { channel: 75, value: bpm - 256 }
+            { cc: 74, value: 2 },
+            { cc: 75, value: bpm - 256 }
         ];
     }
     return null;
@@ -263,15 +343,9 @@ export function setupPresetButtons(ctx) {
         if (btn) {
             btn.onclick = async () => {
                 if (!ctx.midiOutput) return;
-                btn.disabled = true;
-                const original = btn.textContent;
-                btn.textContent = 'Enviando...';
+                setButtonLoading(btn, 'Enviando...', preset.label, 800);
                 ctx.midiOutput.send([0xB0, MIDI_CC_PRESET, preset.value]);
                 ctx.statusDiv.textContent = `${preset.label} enviado (CC ${MIDI_CC_PRESET} value ${preset.value})`;
-                setTimeout(() => {
-                    btn.disabled = false;
-                    btn.textContent = original;
-                }, 800);
             };
         }
     });
