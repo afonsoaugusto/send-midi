@@ -1,0 +1,6 @@
+numpy
+pydub
+pyttsx3
+gtts
+pygame
+jsonschema

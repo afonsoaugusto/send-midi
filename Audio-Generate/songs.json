@@ -1,0 +1,370 @@
+[
+    {
+        "number": 1,
+        "group": "INTRO MISTERIOSA",
+        "name": "In the Air Tonight",
+        "bpm": 95,
+        "author": "Phil Collins",
+        "obs": "",
+        "tom": "C#m (meio Tom Abaixo)",
+        "color": true
+    },
+    {
+        "number": 2,
+        "group": "COMEÇO EXPLOSIVO",
+        "name": "Crazy",
+        "bpm": 103,
+        "author": "Seal",
+        "obs": "",
+        "tom": "D#m (meio tom abaixo",
+        "color": true
+    },
+    {
+        "number": 3,
+        "group": "COMEÇO EXPLOSIVO",
+        "name": "Rádio Pirata",
+        "bpm": 153,
+        "author": "RPM",
+        "obs": "",
+        "tom": "B",
+        "color": false
+    },
+    {
+        "number": 4,
+        "group": "BLOCO VIOLÃO",
+        "name": "Achy Breaky Heart",
+        "bpm": 122,
+        "author": "Billy Ray Cyrus",
+        "obs": "",
+        "tom": "A",
+        "color": false
+    },
+    {
+        "number": 5,
+        "group": "BLOCO VIOLÃO",
+        "name": "Garoto de Aluguel",
+        "bpm": 90,
+        "author": "Zé Ramalho",
+        "obs": "",
+        "tom": "F#/G♭m",
+        "color": false
+    },
+    {
+        "number": 6,
+        "group": "BLOCO VIOLÃO",
+        "name": "Pais E Filhos",
+        "bpm": 90,
+        "author": "Legião Urbana",
+        "obs": "",
+        "tom": "G",
+        "color": false
+    },
+    {
+        "number": 7,
+        "group": "BLOCO VIOLÃO",
+        "name": "Telegrama",
+        "bpm": 95,
+        "author": "Zeca Baleiro",
+        "obs": "",
+        "tom": "Bm",
+        "color": false
+    },
+    {
+        "number": 8,
+        "group": "BLOCO VIOLÃO",
+        "name": "Sem Radar",
+        "bpm": 76,
+        "author": "Ls Jack",
+        "obs": "",
+        "tom": "F",
+        "color": false
+    },
+    {
+        "number": 9,
+        "group": "BLOCO VIOLÃO",
+        "name": "Chão de Giz",
+        "bpm": 144,
+        "author": "Zé Ramalho",
+        "obs": "",
+        "tom": "G",
+        "color": false
+    },
+    {
+        "number": 10,
+        "group": "BLOCO VIOLÃO",
+        "name": "Um Minuto Para O Fim Do Mundo",
+        "bpm": 127,
+        "author": "CPM 22",
+        "obs": "",
+        "tom": "C",
+        "color": false
+    },
+    {
+        "number": 11,
+        "group": "CONVIDADOS ESPECIAIS",
+        "name": "Mulher de fases",
+        "bpm": 132,
+        "author": "Raimundos",
+        "obs": "feat. Thammer",
+        "tom": "G",
+        "color": false
+    },
+    {
+        "number": 12,
+        "group": "CONVIDADOS ESPECIAIS",
+        "name": "A Cera",
+        "bpm": 133,
+        "author": "O Surto",
+        "obs": "feat. Diego",
+        "tom": "Cm (1 Tom Abaixo)",
+        "color": true
+    },
+    {
+        "number": 13,
+        "group": "CONVIDADOS ESPECIAIS",
+        "name": "In the End",
+        "bpm": 105,
+        "author": "Linkin Park",
+        "obs": "feat. Hinner Caldeira",
+        "tom": "D#/E♭m",
+        "color": false
+    },
+    {
+        "number": 14,
+        "group": "CLIMA EMOCIONAL",
+        "name": "Last Kiss",
+        "bpm": 112,
+        "author": "Pearl Jam",
+        "obs": "",
+        "tom": "G",
+        "color": false
+    },
+    {
+        "number": 15,
+        "group": "CLIMA EMOCIONAL",
+        "name": "Patience",
+        "bpm": 120,
+        "author": "Guns N' Roses",
+        "obs": "",
+        "tom": "B",
+        "color": true
+    },
+    {
+        "number": 16,
+        "group": "CLIMA EMOCIONAL",
+        "name": "Black",
+        "bpm": 77,
+        "author": "Pearl Jam",
+        "obs": "feat. Vinícius na GT2",
+        "tom": "Em",
+        "color": false
+    },
+    {
+        "number": 17,
+        "group": "BALADAS INTERNACIONAIS",
+        "name": "Still Loving You",
+        "bpm": 104,
+        "author": "Scorpions",
+        "obs": "",
+        "tom": "D#m",
+        "color": true
+    },
+    {
+        "number": 18,
+        "group": "BALADAS INTERNACIONAIS",
+        "name": "Lover Why",
+        "bpm": 135,
+        "author": "Century",
+        "obs": "",
+        "tom": "G#/A♭m"
+    },
+    {
+        "number": 19,
+        "group": "BLOCO NACIONAL",
+        "name": "Exagerado",
+        "bpm": 136,
+        "author": "Cazuza",
+        "obs": "",
+        "tom": "G"
+    },
+    {
+        "number": 20,
+        "group": "BLOCO NACIONAL",
+        "name": "Olhos certos",
+        "bpm": 95,
+        "author": "Detonautas",
+        "obs": "Léo no violão",
+        "tom": "C♯/D♭m"
+    },
+    {
+        "number": 21,
+        "group": "BLOCO NACIONAL",
+        "name": "Primeiros Erros (Chove)",
+        "bpm": 120,
+        "author": "Capital Inicial",
+        "obs": "Léo no violão",
+        "tom": "D"
+    },
+    {
+        "number": 22,
+        "group": "RETORNO AO PALCO",
+        "name": "Wanted Dead Or Alive",
+        "bpm": 150,
+        "author": "Bon Jovi",
+        "obs": "",
+        "tom": "G"
+    },
+    {
+        "number": 23,
+        "group": "RETORNO DA BANDA",
+        "name": "À Sua Maneira",
+        "bpm": 113,
+        "author": "Capital Inicial",
+        "obs": "Léo no violão",
+        "tom": "Bm"
+    },
+    {
+        "number": 24,
+        "group": "RETORNO DA BANDA",
+        "name": "Será",
+        "bpm": 194,
+        "author": "Legião Urbana",
+        "obs": "",
+        "tom": "C"
+    },
+    {
+        "number": 25,
+        "group": "RETORNO DA BANDA",
+        "name": "Tempo Perdido",
+        "bpm": 186,
+        "author": "Legião Urbana",
+        "obs": "",
+        "tom": "Em"
+    },
+    {
+        "number": 26,
+        "group": "PRÉ-CLÍMAX",
+        "name": "Baby Can I Hold You",
+        "bpm": 74,
+        "author": "Tracy Chapman",
+        "obs": "",
+        "tom": "D"
+    },
+    {
+        "number": 27,
+        "group": "PRÉ-CLÍMAX",
+        "name": "Have You Ever Seen The Rain",
+        "bpm": 116,
+        "author": "Creedence Clearwater Revival",
+        "obs": "",
+        "tom": "C"
+    },
+    {
+        "number": 28,
+        "group": "PRÉ-CLÍMAX",
+        "name": "Wherever You Will Go",
+        "bpm": 112,
+        "author": "The Calling",
+        "obs": "",
+        "tom": "D"
+    },
+    {
+        "number": 29,
+        "group": "PRÉ-CLÍMAX",
+        "name": "Wish You Were Here",
+        "bpm": 123,
+        "author": "Pink Floyd",
+        "obs": "",
+        "tom": "G"
+    },
+    {
+        "number": 30,
+        "group": "PRÉ-CLÍMAX",
+        "name": "Wicked Game",
+        "bpm": 112,
+        "author": "Chris Isaak",
+        "obs": "feat. Brankko",
+        "tom": "A"
+    },
+    {
+        "number": 31,
+        "group": "BLOCO EM Dm",
+        "name": "Another Brick in the Wall",
+        "bpm": 104,
+        "author": "Pink Floyd",
+        "obs": "",
+        "tom": "Dm"
+    },
+    {
+        "number": 32,
+        "group": "BLOCO EM Dm",
+        "name": "Alvorada Voraz",
+        "bpm": 135,
+        "author": "RPM",
+        "obs": "",
+        "tom": "Dm"
+    },
+    {
+        "number": 33,
+        "group": "BLOCO EM Dm",
+        "name": "Malandragem",
+        "bpm": 133,
+        "author": "Cássia Eller",
+        "obs": "",
+        "tom": "Dm"
+    },
+    {
+        "number": 34,
+        "group": "BLOCO MAMONAS",
+        "name": "Pelados Em Santos",
+        "bpm": 136,
+        "author": "Mamonas Assassinas",
+        "obs": "",
+        "tom": "D"
+    },
+    {
+        "number": 35,
+        "group": "BLOCO MAMONAS",
+        "name": "Chopis Centis",
+        "bpm": 121,
+        "author": "Mamonas Assassinas",
+        "obs": "",
+        "tom": "A"
+    },
+    {
+        "number": 36,
+        "group": "BLOCO MAMONAS",
+        "name": "Vira-Vira",
+        "bpm": 202,
+        "author": "Mamonas Assassinas",
+        "obs": "",
+        "tom": "E"
+    },
+    {
+        "number": 37,
+        "group": "ENCERRAMENTO FINAL",
+        "name": "Metamorfose Ambulante",
+        "bpm": 136,
+        "author": "Raul Seixas",
+        "obs": "",
+        "tom": "D"
+    },
+    {
+        "number": 38,
+        "group": "ENCERRAMENTO FINAL",
+        "name": "O Astronauta de Mármore (Starman)",
+        "bpm": 107,
+        "author": "Nenhum De Nós",
+        "obs": "feat. Mamãe",
+        "tom": "F"
+    },
+    {
+        "number": 39,
+        "group": "ENCERRAMENTO FINAL",
+        "name": "Que Pais É Este",
+        "bpm": 146,
+        "author": "Legião Urbana",
+        "obs": "feat. Windson",
+        "tom": "C"
+    }
+]
