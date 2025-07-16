@@ -1,12 +1,12 @@
 [
     {
         "number": 1,
-        "group": "INTRO MISTERIOSA",
-        "name": "In the Air Tonight",
-        "bpm": 95,
-        "author": "Phil Collins",
+        "group": "BALADAS INTERNACIONAIS",
+        "name": "Still Loving You",
+        "bpm": 104,
+        "author": "Scorpions",
         "obs": "",
-        "tom": "C#m (meio Tom Abaixo)",
+        "tom": "D#m",
         "color": true
     },
     {
